@@ -1,0 +1,24 @@
+package raghu.listview;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.widget.ListView;
+
+public class MainActivity extends AppCompatActivity {
+
+    ListView lvmovie;
+    String[] movieName = {"Cars","GOT","Avengers","Avatar","You"};
+    String[] movieDescription = {"Cars Description","GOT Description","Avengers Description","Avatar Description","You Description"};
+    int[] movieImages = {R.drawable.poster1,R.drawable.poster2,R.drawable.poster3,R.drawable.poster4,R.drawable.poster5};
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        lvmovie = findViewById(R.id.lvmovie);
+        lvmovie = findViewById(R.id.lvmovie);
+        MovieAdaptor movieAdapter = new MovieAdaptor(this,movieName,movieImages,movieDescription);
+        lvmovie.setAdapter(movieAdapter);
+    }
+}
