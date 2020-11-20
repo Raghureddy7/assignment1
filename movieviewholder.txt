@@ -1,0 +1,18 @@
+package raghu.listview;
+
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class MovieViewHolder {
+
+    ImageView itemImage;
+    TextView movieTitle;
+    TextView movieDescription;
+    MovieViewHolder(View v)
+    {
+        itemImage = v.findViewById(R.id.imageView);
+        movieTitle = v.findViewById(R.id.textView1);
+        movieDescription = v.findViewById(R.id.textView2);
+    }
+}
