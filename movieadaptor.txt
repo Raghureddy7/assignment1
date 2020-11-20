@@ -1,0 +1,50 @@
+package raghu.listview;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Toast;
+
+public class MovieAdaptor extends ArrayAdapter<String> {
+    Context context;
+    int[] images;
+    String[] movieName;
+    String[] movieDescription;
+
+    public MovieAdaptor(Context context, String[] movieName, int[] images, String[] movieDescription) {
+        super(context, R.layout.single_item,R.id.textView1, movieName);
+        this.context = context;
+        this.images = images;
+        this.movieName =movieName;
+        this.movieDescription = movieDescription;
+    }
+
+    @Override
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        View singleItem1 = convertView;
+        MovieViewHolder holder = null;
+        if(singleItem1 == null)
+        {
+            LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            singleItem1 = layoutInflater.inflate(R.layout.single_item,parent,false);
+            holder = new MovieViewHolder(singleItem1);
+            singleItem1.setTag(holder);
+        }
+        else
+        {
+            holder= (MovieViewHolder) singleItem1.getTag();
+        }
+        holder.itemImage.setImageResource(images[position]);
+        holder.movieTitle.setText(movieName[position]);
+        holder.movieDescription.setText(movieDescription[position]);
+        singleItem1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "You clicked:"+ movieName[position], Toast.LENGTH_SHORT).show();
+            }
+        });
+        return singleItem1;
+    }
+}
